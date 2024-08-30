@@ -21,7 +21,7 @@ export function Item() {
   return (
     <div
       ref={ref}
-      className={`h-[6.25rem] border-2 border-black bg-blue-300 mb-[0.625rem] p-[0.625rem]
+      className={`h-[6.25rem] border-2 border-black bg-blue-300 p-[0.625rem]
         flex justify-start items-center
         text-xl tracking-wide ${dragging ? 'bg-white border-dashed' : ''}`}
     >
