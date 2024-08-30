@@ -1,12 +1,19 @@
 import { useEffect, useRef } from 'react';
 import { useDrag } from 'react-dnd';
+import { ListItem } from '../../store';
 
-export function Item() {
+interface ItemProps {
+  data: ListItem;
+}
+
+export function Item(props: ItemProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   const [{ dragging }, drag] = useDrag({
     type: 'list-item',
-    item: {},
+    item: {
+      id: props.data.id,
+    },
     collect(monitor) {
       return {
         dragging: monitor.isDragging(),
@@ -26,7 +33,7 @@ export function Item() {
         text-xl tracking-wide ${dragging ? 'bg-white border-dashed' : ''}`}
     >
       <input type="checkbox" className="w-[2.5rem] h-[2.5rem] mr-[0.625rem]" />
-      <p>待办事项</p>
+      <p>{props.data.content}</p>
     </div>
   );
 }
