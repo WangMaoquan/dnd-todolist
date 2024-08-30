@@ -11,17 +11,30 @@ interface State {
 }
 
 interface Action {
-  addItem: (item: ListItem) => void;
+  addItem: (item: ListItem, id?: string) => void;
   deleteItem: (id: string) => void;
   updateItem: (item: ListItem) => void;
 }
 
 export const useTodoListStore = create<State & Action>((set) => ({
   list: [],
-  addItem: (item: ListItem) => {
+  addItem: (item: ListItem, id?: string) => {
     set((state) => {
+      if (!id) {
+        return {
+          list: [...state.list, item],
+        };
+      }
+      const newList = [...state.list];
+
+      newList.splice(
+        newList.findIndex((item) => item.id === id),
+        0,
+        item,
+      );
+
       return {
-        list: [...state.list, item],
+        list: newList,
       };
     });
   },

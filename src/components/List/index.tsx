@@ -15,7 +15,7 @@ export const List: FC<ListProps> = (props) => {
         ? list.map((item) => {
             return (
               <Fragment key={item.id}>
-                <Gap />
+                <Gap id={item.id} />
                 <Item data={item} />
               </Fragment>
             );
