@@ -1,4 +1,4 @@
-import { FC, Fragment } from 'react';
+import { FC } from 'react';
 import { Item } from '../Item.tsx';
 import { Gap } from '../Gap';
 import { useTodoListStore } from '../../store';
